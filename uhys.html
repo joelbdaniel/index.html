@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vaiga ❤️</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #ff4081;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    .btn-group {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes-button {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .no-button {
+      background-color: #f44336;
+      color: white;
+      position: relative;
+      transition: margin-left 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1: Apology -->
+  <div id="apologyPage">
+    <h1>Sorry, Vaiga! 😢</h1>
+    <img src="https://media1.tenor.com/m/N4a4SAa0qtsAAAAd/sorry-sad.gif" alt="Sorry Puppy GIF"/>
+    <p class="question">Will you accept my apology?</p>
+    <div class="btn-group">
+      <button id="yes1" class="yes-button">Yes</button>
+      <button id="no1" class="no-button">No</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Will you be my wife -->
+  <div id="wifePage" class="hidden">
+    <h1>Will You Be My Wife, Vaiga? 💍</h1>
+    <p class="question">Will you be my wife?</p>
+    <div class="btn-group">
+      <button id="yes2" class="yes-button">Yes</button>
+      <button id="no2" class="no-button">No</button>
+    </div>
+  </div>
+
+  <!-- Page 3: I love you -->
+  <div id="lovePage" class="hidden">
+    <h1>I Love You, Vaiga! 💖</h1>
+    <p class="question">Will you say "I love you too"?</p>
+    <div class="btn-group">
+      <button id="yes3" class="yes-button">I love you too</button>
+      <button id="no3" class="no-button">No</button>
+    </div>
+  </div>
+
+  <script>
+    let apologyCount = 0;
+    let wifeCount = 0;
+    let loveCount = 0;
+
+    const yes1 = document.getElementById("yes1");
+    const no1 = document.getElementById("no1");
+    const yes2 = document.getElementById("yes2");
+    const no2 = document.getElementById("no2");
+    const yes3 = document.getElementById("yes3");
+    const no3 = document.getElementById("no3");
+
+    function showPopup(message) {
+      alert(message);
+    }
+
+    yes1.onclick = () => {
+      document.getElementById("apologyPage").classList.add("hidden");
+      document.getElementById("wifePage").classList.remove("hidden");
+    };
+
+    no1.onclick = () => {
+      apologyCount++;
+      const scale = 1 + 0.1 * apologyCount;
+      yes1.style.transform = `scale(${scale})`;
+      no1.style.marginLeft = `${(scale - 1) * 50}px`;
+
+      if (apologyCount === 4) {
+        showPopup("Please forgive me Vaiga 😢💕");
+      } else if (apologyCount > 4) {
+        if (apologyCount === 5) {
+          showPopup("I'm sorry, Vaiga! I can't stop loving you 😔");
+        } else if (apologyCount === 6) {
+          showPopup("I hope you'll forgive me soon... 💖");
+        } else {
+          showPopup("I’ll keep apologizing until you forgive me, Vaiga! 😢");
+        }
+      }
+    };
+
+    yes2.onclick = () => {
+      document.getElementById("wifePage").classList.add("hidden");
+      document.getElementById("lovePage").classList.remove("hidden");
+    };
+
+    no2.onclick = () => {
+      wifeCount++;
+      const scale = 1 + 0.1 * wifeCount;
+      yes2.style.transform = `scale(${scale})`;
+      no2.style.marginLeft = `${(scale - 1) * 50}px`;
+
+      if (wifeCount === 4) {
+        showPopup("I'll wait forever for your Yes, Vaiga 💍💖");
+      } else if (wifeCount > 4) {
+        if (wifeCount === 5) {
+          showPopup("Vaiga, you're the love of my life. I won't stop waiting 💍");
+        } else if (wifeCount === 6) {
+          showPopup("I love you more with every moment, Vaiga ❤️");
+        } else {
+          showPopup("I’m waiting for your Yes, Vaiga. You’re everything to me ❤️");
+        }
+      }
+    };
+
+    yes3.onclick = () => {
+      alert("I love you too, Vaiga! ❤️");
+      location.reload();
+    };
+
+    no3.onclick = () => {
+      loveCount++;
+      const scale = 1 + 0.1 * loveCount;
+      yes3.style.transform = `scale(${scale})`;
+      
+      // Adjust margin to prevent overlap and move "No" to the right
+      no3.style.marginLeft = `${(scale - 1) * 80}px`;
+
+      if (loveCount === 4) {
+        showPopup("Even if you say no... I’ll still love you ❤️");
+      } else if (loveCount > 4) {
+        if (loveCount === 5) {
+          showPopup("Every 'No' makes me love you more. 💖");
+        } else if (loveCount === 6) {
+          showPopup("My heart beats only for you, Vaiga 💘");
+        } else {
+          showPopup("You are the love of my life, no matter what. ❤️");
+        }
+      }
+    };
+  </script>
+</body>
+</html>
